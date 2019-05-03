@@ -1,0 +1,9 @@
+<% if !@paragraph.blank? %>
+<h1>Text #<%= @paragraph.id %></h1>
+<p>
+  <%= @paragraph.text  %>
+</p>
+<p>
+  <%= @paragraph.author %>
+</p>
+<% end %>

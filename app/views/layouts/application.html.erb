@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Quiz1</title>
+    <title>Quiz</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,45 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-dark bg-dark">
+      <%= link_to 'Home', root_path, class: "nav-link" %>
+      <%= link_to 'Random Text', paragraphs_path, class: "nav-link" %>
+      <%= link_to '#', class: "nav-link", data: {toggle: 'modal', target: '#myModal'} do %>
+        <i class="fa fa-plus-circle"></i>
+        <span>Submit New Text</span>
+      <% end %>
+    </nav>
+      
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Paragraph</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%= simple_form_for Paragraph.new do |f| %>
+            <div class="modal-body">
+              <%= f.input :text %>
+              <%= f.input :author %>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit "Submit Paragraph", class: "btn btn-primary" %>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+      
+    <div class="container">
+      <% if flash[:error].present? %>
+        <div class="col-10 offset-1 alert alert-danger">
+          <%= flash[:error].html_safe %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

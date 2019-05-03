@@ -1,0 +1,22 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Paragraph</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= simple_form_for @paragraph do |f| %>
+        <div class="modal-body">
+          <%= f.input :text %>
+          <%= f.input :author %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Submit Paragraph", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

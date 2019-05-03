@@ -64,6 +64,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'bootstrap'
+gem "font-awesome-rails"
+
+gem 'simple_form'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_bot_rails'
+end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
